@@ -32,9 +32,3 @@ The portfolio is lightweight, responsive, and optimized for viewing on desktops,
   - Google Fonts  
 
 ---
-## 🚀 Getting Started  
-
-### 1. Clone Repository  
-```bash
-git clone https://github.com/Deepak172003/portfolio.git
-cd portfolio
