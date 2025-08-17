@@ -33,10 +33,11 @@ The portfolio is lightweight, responsive, and optimized for viewing on desktops,
 
 ---
 
-https://github.com/Deepak172003/Portfolio/blob/b4e93adeee29c0ee93f8ff9d891e6f9e60d1b122/Screenshot%20(94).png
-https://github.com/Deepak172003/Portfolio/blob/7dcab1370496a437caa0531cfffd261e11f9cc81/Screenshot%20(95).png
-https://github.com/Deepak172003/Portfolio/blob/39eb5daefcbba46ffffc44a01c46f85faf0db911/Screenshot%20(96).png
-https://github.com/Deepak172003/Portfolio/blob/b9a8ff966f5bcb033518288f5d5a7c7cec428d19/Screenshot%20(97).png
-https://github.com/Deepak172003/Portfolio/blob/230533e0602352e1f0ebaa32971a0777b07dd886/Screenshot%20(98).png
-https://github.com/Deepak172003/Portfolio/blob/5b5c3a729cb7aa8e90fef03b0a32356ac1385bd8/Screenshot%20(99).png
-https://github.com/Deepak172003/Portfolio/blob/1c30b9f3f90787f3fc4b5f4e6b770f23d37ba3e9/Screenshot%20(100).png
+[image](https://github.com/Deepak172003/Portfolio/blob/b4e93adeee29c0ee93f8ff9d891e6f9e60d1b122/Screenshot%20(94).png)
+[image](https://github.com/Deepak172003/Portfolio/blob/7dcab1370496a437caa0531cfffd261e11f9cc81/Screenshot%20(95).png)
+[image](https://github.com/Deepak172003/Portfolio/blob/39eb5daefcbba46ffffc44a01c46f85faf0db911/Screenshot%20(96).png)
+[image](https://github.com/Deepak172003/Portfolio/blob/b9a8ff966f5bcb033518288f5d5a7c7cec428d19/Screenshot%20(97).png)
+[image](https://github.com/Deepak172003/Portfolio/blob/230533e0602352e1f0ebaa32971a0777b07dd886/Screenshot%20(98).png)
+[image](https://github.com/Deepak172003/Portfolio/blob/5b5c3a729cb7aa8e90fef03b0a32356ac1385bd8/Screenshot%20(99).png)
+[image](https://github.com/Deepak172003/Portfolio/blob/1c30b9f3f90787f3fc4b5f4e6b770f23d37ba3e9/Screenshot%20(100).png)
+[image](https://github.com/Deepak172003/Portfolio/blob/c4eedfd175f272df92c48626aa74cd5588bf3b60/Screenshot%20(101).png)
