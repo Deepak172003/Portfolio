@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate Viewer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+    header {
+      background: #111827;
+      color: white;
+      padding: 12px 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .viewer {
+      width: 90%;
+      height: 85%;
+      margin-top: 10px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <header id="certTitle">Certificate</header>
+  <div class="viewer">
+    <object id="pdfObj" data="" type="application/pdf" width="100%" height="100%">
+      <embed id="pdfEmbed" src="" type="application/pdf" width="100%" height="100%">
+        <p>Your browser doesn’t support PDFs. 
+          <a id="downloadLink" href="#">Download here</a>.
+        </p>
+      </embed>
+    </object>
+  </div>
+
+  <script>
+    // Get query params (file + title)
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+    const title = params.get("title") || "Certificate";
+
+    // Set header text
+    document.getElementById("certTitle").innerText = title;
+
+    // Load the PDF if provided
+    if (file) {
+      document.getElementById("pdfObj").data = file;
+      document.getElementById("pdfEmbed").src = file;
+      document.getElementById("downloadLink").href = file;
+    } else {
+      document.querySelector(".viewer").innerHTML =
+        "<p style='padding:20px;'>No certificate selected. Please use a proper link.</p>";
+    }
+  </script>
+</body>
+</html>
