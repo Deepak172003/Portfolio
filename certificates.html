@@ -177,11 +177,10 @@
   <div class="page">
     <header class="topbar">
       <div class="title-wrap">
-        <span class="eyebrow">Document viewer</span>
+        <span class="eyebrow">Documents</span>
         <h1 id="docTitle">Portfolio Document</h1>
         <p>
-          Open resumes, certificates, and academic records in the same cinematic
-          portfolio theme.
+          Open resume files, certificates, and academic records here.
         </p>
       </div>
 
@@ -228,7 +227,7 @@
       fallbackLink.href = safeFile;
     } else {
       viewer.innerHTML =
-        '<div class="empty-state"><p>No document was selected. Return to the portfolio and choose a resume or certificate from there.</p></div>';
+        '<div class="empty-state"><p>No document was selected. Please return to the portfolio and choose a file to open.</p></div>';
       downloadLink.setAttribute("aria-disabled", "true");
       downloadLink.style.pointerEvents = "none";
       downloadLink.style.opacity = "0.5";
