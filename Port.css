@@ -1,21 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --bg: #050505;
-  --bg-soft: #0d0d0d;
-  --surface: rgba(17, 17, 17, 0.92);
-  --surface-strong: rgba(22, 22, 22, 0.98);
+  --bg: #060606;
+  --bg-soft: #111111;
+  --panel: rgba(14, 14, 16, 0.92);
+  --panel-strong: rgba(18, 18, 20, 0.98);
+  --panel-light: rgba(255, 255, 255, 0.04);
   --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.14);
   --text: #f5f5f1;
-  --muted: #b7b7b3;
-  --muted-strong: #d1d1cc;
+  --muted: #b8b8b2;
+  --muted-strong: #d8d8d2;
   --red: #e50914;
-  --red-soft: #ff4438;
-  --gold: #f5c96c;
+  --red-soft: #ff5b3f;
+  --gold: #f4c56f;
+  --cyan: #82dfff;
   --white: #ffffff;
   --black: #000000;
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.5);
+  --radius-xl: 34px;
+  --radius-lg: 26px;
+  --radius-md: 20px;
 }
 
 * {
@@ -32,9 +37,10 @@ body {
   color: var(--text);
   font-family: "Manrope", sans-serif;
   background:
-    radial-gradient(circle at 20% 0%, rgba(229, 9, 20, 0.22), transparent 24%),
-    radial-gradient(circle at 85% 15%, rgba(245, 201, 108, 0.08), transparent 20%),
-    linear-gradient(180deg, #0a0a0a 0%, var(--bg) 34%, #090909 100%);
+    radial-gradient(circle at 12% 0%, rgba(229, 9, 20, 0.26), transparent 20%),
+    radial-gradient(circle at 88% 10%, rgba(130, 223, 255, 0.1), transparent 18%),
+    radial-gradient(circle at 60% 18%, rgba(244, 197, 111, 0.08), transparent 20%),
+    linear-gradient(180deg, #070707 0%, var(--bg) 42%, #090909 100%);
 }
 
 body::before {
@@ -43,15 +49,25 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.55)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.48)),
     repeating-linear-gradient(
       90deg,
       transparent 0,
       transparent 14px,
-      rgba(255, 255, 255, 0.016) 14px,
-      rgba(255, 255, 255, 0.016) 15px
+      rgba(255, 255, 255, 0.015) 14px,
+      rgba(255, 255, 255, 0.015) 15px
     );
   opacity: 0.55;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.06), transparent 28%),
+    radial-gradient(circle at 50% 115%, rgba(229, 9, 20, 0.08), transparent 26%);
 }
 
 a {
@@ -61,21 +77,21 @@ a {
 main {
   position: relative;
   z-index: 1;
-  max-width: 1500px;
+  max-width: 1520px;
   margin: 0 auto;
-  padding: 0 clamp(18px, 4vw, 48px) 56px;
+  padding: 0 clamp(18px, 4vw, 54px) 56px;
 }
 
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 18px clamp(18px, 4vw, 48px);
-  background: linear-gradient(180deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.72));
+  padding: 18px clamp(18px, 4vw, 54px);
+  background: linear-gradient(180deg, rgba(7, 7, 7, 0.96), rgba(7, 7, 7, 0.78));
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
 }
@@ -90,7 +106,7 @@ main {
 .brand-mark {
   color: var(--red);
   font-family: "Bebas Neue", sans-serif;
-  font-size: 2.35rem;
+  font-size: 2.5rem;
   line-height: 1;
   letter-spacing: 0.08em;
 }
@@ -106,7 +122,7 @@ main {
 }
 
 .brand-copy strong {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -122,18 +138,18 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .site-nav a {
   color: var(--muted);
-  font-size: 0.83rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 800;
   letter-spacing: 0.14em;
-  text-decoration: none;
   text-transform: uppercase;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .site-nav a:hover,
@@ -148,16 +164,15 @@ main {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  min-height: 48px;
+  padding: 0 18px;
   border-radius: 999px;
   font-weight: 800;
-  letter-spacing: 0.02em;
   text-decoration: none;
-  transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
 }
 
 .header-action {
-  min-height: 46px;
-  padding: 0 18px;
   color: var(--white);
   background: linear-gradient(135deg, var(--red), var(--red-soft));
   box-shadow: 0 14px 30px rgba(229, 9, 20, 0.26);
@@ -171,17 +186,16 @@ main {
 
 .hero,
 .section-block {
-  scroll-margin-top: 110px;
+  scroll-margin-top: 112px;
 }
 
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.82fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.78fr);
   gap: 24px;
-  align-items: stretch;
   min-height: calc(100vh - 98px);
-  padding: clamp(28px, 5vw, 52px) 0 30px;
+  padding: clamp(30px, 5vw, 54px) 0 26px;
 }
 
 .hero::before,
@@ -189,14 +203,15 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 34px;
+  border-radius: var(--radius-xl);
 }
 
 .hero::before {
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.48) 58%, rgba(0, 0, 0, 0.2)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.52) 55%, rgba(0, 0, 0, 0.18)),
     radial-gradient(circle at 78% 18%, rgba(229, 9, 20, 0.35), transparent 18%),
-    linear-gradient(150deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    radial-gradient(circle at 62% 22%, rgba(130, 223, 255, 0.09), transparent 18%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
@@ -204,15 +219,15 @@ main {
 .hero::after {
   pointer-events: none;
   background:
-    radial-gradient(circle at 72% 18%, rgba(245, 201, 108, 0.09), transparent 16%),
-    linear-gradient(120deg, rgba(229, 9, 20, 0.1), transparent 32%);
+    radial-gradient(circle at 74% 12%, rgba(244, 197, 111, 0.14), transparent 14%),
+    linear-gradient(120deg, rgba(229, 9, 20, 0.14), transparent 34%);
 }
 
 .hero-content,
 .hero-panel {
   position: relative;
   z-index: 1;
-  padding: clamp(26px, 4vw, 48px);
+  padding: clamp(24px, 4vw, 50px);
 }
 
 .hero-content {
@@ -226,21 +241,27 @@ main {
 .fact-label,
 .card-badge,
 .card-type,
+.skill-kicker,
+.metric-label,
+.credential-source,
 .contact-card span,
 .timeline span {
   display: inline-block;
   color: var(--gold);
-  font-size: 0.79rem;
+  font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .hero-title,
-.section-heading h2,
 .panel-title,
+.section-heading h2,
 .info-panel h3,
-.skill-card h3 {
+.skill-card h3,
+.achievement-card h3,
+.credential-card h3,
+.contact-callout h3 {
   margin: 0;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.05em;
@@ -248,16 +269,16 @@ main {
 
 .hero-title {
   margin-top: 10px;
-  font-size: clamp(4.2rem, 10vw, 8rem);
+  font-size: clamp(4rem, 10vw, 8.3rem);
   line-height: 0.88;
   max-width: 9ch;
 }
 
 .hero-subtitle {
   margin: 14px 0 0;
-  font-size: clamp(1.12rem, 2vw, 1.46rem);
-  font-weight: 800;
   color: var(--white);
+  font-size: clamp(1.08rem, 2vw, 1.5rem);
+  font-weight: 800;
 }
 
 .hero-meta {
@@ -273,7 +294,7 @@ main {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
   color: var(--white);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -283,33 +304,35 @@ main {
 .panel-copy,
 .section-heading p,
 .poster-card p,
+.detail-list li,
 .timeline p,
+.credential-card p,
+.achievement-card p,
+.contact-callout p,
 .contact-card a,
-.contact-card p {
+.contact-card p,
+.metric-poster p,
+.skill-spotlight p {
   color: var(--muted-strong);
-  line-height: 1.75;
+  line-height: 1.72;
 }
 
 .hero-summary {
-  max-width: 64ch;
-  margin: 18px 0 0;
+  max-width: 66ch;
+  margin: 20px 0 0;
 }
 
 .hero-actions,
 .panel-actions,
-.card-actions {
+.card-actions,
+.stacked-links {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .hero-actions {
-  margin-top: 24px;
-}
-
-.btn {
-  min-height: 48px;
-  padding: 0 18px;
+  margin-top: 26px;
 }
 
 .btn-primary,
@@ -333,18 +356,51 @@ main {
 
 .hero-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 24px;
-  max-width: 700px;
+  margin-top: 26px;
+  max-width: 840px;
+}
+
+.fact-card,
+.metric-poster,
+.spotlight-metric,
+.poster-card,
+.info-panel,
+.skill-card,
+.credential-card,
+.achievement-card,
+.contact-card,
+.contact-callout {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.fact-card::before,
+.metric-poster::before,
+.poster-card::before,
+.info-panel::before,
+.skill-card::before,
+.credential-card::before,
+.achievement-card::before,
+.contact-card::before,
+.contact-callout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.28), transparent 40%);
 }
 
 .fact-card {
-  padding: 14px 16px;
-  border: 1px solid var(--line);
+  padding: 16px 18px;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(12px);
 }
 
 .fact-label {
@@ -353,23 +409,22 @@ main {
 
 .fact-value {
   display: block;
-  margin-top: 8px;
-  font-size: 1.55rem;
+  margin-top: 10px;
+  font-size: 1.45rem;
 }
 
 .panel {
   align-self: center;
-  border: 1px solid var(--line);
   border-radius: 30px;
   background:
-    radial-gradient(circle at top right, rgba(229, 9, 20, 0.18), transparent 30%),
-    linear-gradient(180deg, rgba(19, 19, 19, 0.9), rgba(7, 7, 7, 0.98));
-  box-shadow: var(--shadow);
+    radial-gradient(circle at top right, rgba(229, 9, 20, 0.22), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(130, 223, 255, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(20, 20, 22, 0.92), rgba(8, 8, 9, 0.98));
 }
 
 .panel-title {
   margin-top: 8px;
-  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
 }
 
 .panel-copy {
@@ -380,8 +435,8 @@ main {
   list-style: none;
   display: grid;
   gap: 14px;
+  margin: 0 0 20px;
   padding: 0;
-  margin: 0 0 22px;
 }
 
 .panel-list li {
@@ -395,14 +450,41 @@ main {
 
 .panel-list li span {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .panel-list li strong {
   display: block;
-  max-width: 210px;
+  max-width: 230px;
   text-align: right;
   font-size: 0.98rem;
+}
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.metric-poster {
+  min-height: 180px;
+  padding: 18px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(244, 197, 111, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0.95), rgba(8, 8, 8, 0.98));
+}
+
+.metric-poster strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.metric-poster p {
+  margin: 12px 0 0;
 }
 
 .section-block {
@@ -429,7 +511,7 @@ main {
 .card-row {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(290px, 31vw);
+  grid-auto-columns: minmax(310px, 31vw);
   gap: 18px;
   overflow-x: auto;
   padding: 6px 4px 12px;
@@ -448,16 +530,27 @@ main {
 .poster-card,
 .info-panel,
 .skill-card,
-.contact-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+.credential-card,
+.achievement-card,
+.contact-card,
+.contact-callout {
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.poster-card:hover,
+.info-panel:hover,
+.skill-card:hover,
+.credential-card:hover,
+.achievement-card:hover,
+.contact-card:hover,
+.contact-callout:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .poster-card {
   scroll-snap-align: start;
-  min-height: 360px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -465,24 +558,15 @@ main {
   padding: 22px;
   border-radius: 24px;
   background:
-    radial-gradient(circle at top right, rgba(229, 9, 20, 0.16), transparent 34%),
-    linear-gradient(180deg, rgba(24, 24, 24, 0.96), rgba(8, 8, 8, 0.98));
-  transition: transform 0.28s ease, border-color 0.28s ease;
-}
-
-.poster-card:hover,
-.skill-card:hover,
-.contact-card:hover,
-.info-panel:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.16);
+    radial-gradient(circle at top right, rgba(229, 9, 20, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(24, 24, 24, 0.96), rgba(9, 9, 9, 0.98));
 }
 
 .poster-card.featured {
-  min-width: 430px;
+  min-width: 460px;
   background:
-    linear-gradient(145deg, rgba(229, 9, 20, 0.34), rgba(20, 20, 20, 0.96) 48%, rgba(6, 6, 6, 0.98)),
-    linear-gradient(180deg, rgba(24, 24, 24, 0.96), rgba(8, 8, 8, 0.98));
+    linear-gradient(145deg, rgba(229, 9, 20, 0.32), rgba(20, 20, 20, 0.96) 52%, rgba(6, 6, 6, 0.98)),
+    radial-gradient(circle at top right, rgba(244, 197, 111, 0.12), transparent 18%);
 }
 
 .card-top {
@@ -495,7 +579,7 @@ main {
 .card-badge {
   padding: 7px 12px;
   border-radius: 999px;
-  background: rgba(245, 201, 108, 0.12);
+  background: rgba(244, 197, 111, 0.12);
 }
 
 .card-type {
@@ -503,13 +587,33 @@ main {
 }
 
 .poster-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.38rem;
+  margin: 0 0 12px;
+  font-size: 1.44rem;
   line-height: 1.25;
 }
 
-.poster-card p {
+.detail-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
   margin: 0;
+  padding: 0;
+}
+
+.detail-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.detail-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.72rem;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--gold));
 }
 
 .tag-list {
@@ -517,8 +621,8 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin: 18px 0 0;
   padding: 0;
-  margin: 16px 0 0;
 }
 
 .tag-list li {
@@ -526,7 +630,7 @@ main {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -539,34 +643,116 @@ main {
   text-transform: uppercase;
 }
 
+.skills-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr);
+  gap: 20px;
+}
+
+.skill-spotlight,
+.info-panel,
+.contact-callout {
+  padding: 24px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(229, 9, 20, 0.14), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(130, 223, 255, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0.95), rgba(8, 8, 8, 0.98));
+}
+
+.skill-spotlight h3,
+.info-panel h3,
+.contact-callout h3 {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.spotlight-metric {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.spotlight-metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.spotlight-metric strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.skill-card {
+  min-height: 250px;
+  padding: 22px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(244, 197, 111, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(9, 9, 9, 0.98));
+}
+
+.skill-kicker {
+  color: var(--cyan);
+}
+
+.skill-card h3 {
+  font-size: 2rem;
+  margin: 8px 0 16px;
+}
+
+.skill-card ul,
+.timeline,
+.cert-list,
+.contact-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-card ul {
+  display: grid;
+  gap: 10px;
+}
+
+.skill-card li {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted-strong);
+}
+
 .grid-two,
 .resume-grid,
-.achievement-grid {
+.contact-layout {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
-.info-panel {
-  border-radius: 28px;
-  padding: 24px;
+.ribbon-panel {
   background:
-    radial-gradient(circle at top right, rgba(229, 9, 20, 0.1), transparent 26%),
-    linear-gradient(180deg, rgba(18, 18, 18, 0.94), rgba(8, 8, 8, 0.98));
-}
-
-.info-panel h3,
-.skill-card h3 {
-  font-size: 2rem;
-  margin-bottom: 14px;
-}
-
-.timeline,
-.cert-list,
-.skill-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    radial-gradient(circle at top right, rgba(244, 197, 111, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0.95), rgba(8, 8, 8, 0.98));
 }
 
 .timeline {
@@ -591,8 +777,88 @@ main {
   margin: 8px 0 0;
 }
 
-.compact-list li {
-  min-height: auto;
+.stacked-links {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 18px;
+}
+
+.certification-wall {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.credential-card {
+  min-height: 240px;
+  padding: 22px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(130, 223, 255, 0.09), transparent 24%),
+    linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(8, 8, 8, 0.98));
+}
+
+.featured-credential {
+  background:
+    linear-gradient(145deg, rgba(229, 9, 20, 0.28), rgba(20, 20, 20, 0.96) 58%, rgba(8, 8, 8, 0.98)),
+    radial-gradient(circle at top right, rgba(244, 197, 111, 0.14), transparent 20%);
+}
+
+.credential-rank,
+.achievement-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+}
+
+.credential-card h3 {
+  font-size: 1.9rem;
+  margin: 10px 0 12px;
+}
+
+.credential-card p {
+  margin: 0;
+}
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.achievement-card {
+  min-height: 250px;
+  padding: 24px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at top right, rgba(229, 9, 20, 0.16), transparent 24%),
+    linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(8, 8, 8, 0.98));
+}
+
+.achievement-card h3 {
+  font-size: 2rem;
+  margin: 4px 0 12px;
+}
+
+.role-banner {
+  background:
+    radial-gradient(circle at top right, rgba(130, 223, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(8, 8, 8, 0.98));
+}
+
+.callout-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cert-list {
@@ -611,23 +877,13 @@ main {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.cert-list li strong,
-.document-list a {
-  color: var(--white);
-  font-weight: 700;
-}
-
-.cert-list li span {
-  color: var(--muted);
-  font-size: 0.92rem;
-  text-align: right;
-}
-
 .document-list li {
   justify-content: flex-start;
 }
 
 .document-list a {
+  color: var(--white);
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -636,43 +892,25 @@ main {
   color: var(--gold);
 }
 
-.skill-grid {
+.contact-callout {
+  min-height: 100%;
+}
+
+.contact-points {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
-.skill-card {
-  min-height: 270px;
-  padding: 20px;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at bottom right, rgba(245, 201, 108, 0.08), transparent 22%),
-    linear-gradient(180deg, rgba(20, 20, 20, 0.95), rgba(9, 9, 9, 0.98));
-  transition: transform 0.28s ease, border-color 0.28s ease;
-}
-
-.skill-card ul {
-  display: grid;
-  gap: 10px;
-}
-
-.skill-card li {
-  padding: 10px 12px;
+.contact-points li {
+  padding: 12px 14px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.05);
-  color: var(--muted-strong);
-}
-
-.callout-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -685,7 +923,8 @@ main {
     linear-gradient(180deg, rgba(20, 20, 20, 0.94), rgba(8, 8, 8, 0.98));
 }
 
-.contact-card a {
+.contact-card a,
+.contact-card p {
   display: block;
   margin-top: 12px;
   font-size: 0.98rem;
@@ -717,7 +956,7 @@ main {
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition: opacity 0.72s ease, transform 0.72s ease;
 }
 
 .reveal.is-visible {
@@ -725,24 +964,45 @@ main {
   transform: translateY(0);
 }
 
-@media (max-width: 1180px) {
-  .hero,
-  .resume-grid,
-  .grid-two,
+@media (max-width: 1280px) {
+  .metric-strip,
+  .certification-wall,
   .achievement-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-stage,
+  .resume-grid,
+  .contact-layout {
     grid-template-columns: 1fr;
   }
 
   .skill-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
 
-  .contact-grid {
+@media (max-width: 1040px) {
+  .hero,
+  .grid-two {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-row {
+    grid-auto-columns: 82vw;
+  }
+
+  .poster-card.featured {
+    min-width: auto;
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .site-header {
     flex-direction: column;
     align-items: flex-start;
@@ -752,13 +1012,9 @@ main {
     justify-content: flex-start;
   }
 
-  .hero {
-    min-height: auto;
-  }
-
-  .hero-facts {
-    grid-template-columns: 1fr;
-    max-width: none;
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .panel-list li {
@@ -770,21 +1026,13 @@ main {
     text-align: left;
   }
 
-  .section-heading {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .card-row {
-    grid-auto-columns: 84vw;
-  }
-
-  .poster-card.featured {
-    min-width: auto;
+  .spotlight-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 700px) {
   main {
     padding-left: 14px;
     padding-right: 14px;
@@ -796,11 +1044,14 @@ main {
   }
 
   .hero-title {
-    font-size: clamp(3.6rem, 18vw, 5.2rem);
+    font-size: clamp(3.4rem, 18vw, 5rem);
   }
 
-  .skill-grid,
-  .contact-grid {
+  .hero-facts,
+  .metric-strip,
+  .certification-wall,
+  .achievement-grid,
+  .skill-grid {
     grid-template-columns: 1fr;
   }
 
